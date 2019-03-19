@@ -43,8 +43,8 @@ class App extends Component {
   equals() {
     this.setState({
       operator: "",
-      value1: "",
-      value2: parseInt(this.state.value1) + parseInt(this.state.value2)
+      value1: parseInt(this.state.value1) + parseInt(this.state.value2),
+      value2: ""
     });
   }
 
@@ -58,8 +58,10 @@ class App extends Component {
           <div className="v1">{this.state.value2 + this.state.operator}</div>
           <div className="v2">{this.state.value1} </div>
         </div>
-        <div className="numbers">{numbers}</div>
-        <div className="operators">{operators}</div>
+        <div className="buttons">
+          <div className="numbers">{numbers}</div>
+          <div className="operators">{operators}</div>
+        </div>
       </div>
     );
   }
