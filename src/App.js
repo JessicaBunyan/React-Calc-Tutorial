@@ -46,7 +46,10 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="display">{this.state.value1 + this.state.value2}</div>
+        <div className="display">
+          <div className="v1">{this.state.value2 + this.state.operator}</div>
+          <div className="v2">{this.state.value1} </div>
+        </div>
         <div className="numbers">{numbers}</div>
         <div className="operators">{operators}</div>
       </div>
