@@ -37,6 +37,8 @@ class App extends Component {
     var ops = [];
     ops.push(<Button value={"+"} onClick={() => this.addOperator("+")} />);
     ops.push(<Button value={"-"} onClick={() => this.addOperator("-")} />);
+    ops.push(<Button value={"*"} onClick={() => this.addOperator("*")} />);
+    ops.push(<Button value={"/"} onClick={() => this.addOperator("/")} />);
 
     ops.push(<Button value={"="} onClick={() => this.equals()} />);
     return ops;
@@ -50,10 +52,16 @@ class App extends Component {
 
     switch (this.state.operator) {
       case "+":
-        result = parseInt(this.state.value2) + parseInt(this.state.value1);
+        result = parseFloat(this.state.value2) + parseFloat(this.state.value1);
         break;
       case "-":
-        result = parseInt(this.state.value2) - parseInt(this.state.value1);
+        result = parseFloat(this.state.value2) - parseFloat(this.state.value1);
+        break;
+      case "*":
+        result = parseFloat(this.state.value2) * parseFloat(this.state.value1);
+        break;
+      case "/":
+        result = parseFloat(this.state.value2) / parseFloat(this.state.value1);
         break;
     }
 
