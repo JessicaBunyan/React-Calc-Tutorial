@@ -36,14 +36,30 @@ class App extends Component {
   getOperators() {
     var ops = [];
     ops.push(<Button value={"+"} onClick={() => this.addOperator("+")} />);
+    ops.push(<Button value={"-"} onClick={() => this.addOperator("-")} />);
+
     ops.push(<Button value={"="} onClick={() => this.equals()} />);
     return ops;
   }
 
   equals() {
+    if (!this.state.operator) {
+      return;
+    }
+    var result;
+
+    switch (this.state.operator) {
+      case "+":
+        result = parseInt(this.state.value2) + parseInt(this.state.value1);
+        break;
+      case "-":
+        result = parseInt(this.state.value2) - parseInt(this.state.value1);
+        break;
+    }
+
     this.setState({
       operator: "",
-      value1: parseInt(this.state.value1) + parseInt(this.state.value2),
+      value1: result,
       value2: ""
     });
   }
