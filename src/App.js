@@ -36,8 +36,16 @@ class App extends Component {
   getOperators() {
     var ops = [];
     ops.push(<Button value={"+"} onClick={() => this.addOperator("+")} />);
-
+    ops.push(<Button value={"="} onClick={() => this.equals()} />);
     return ops;
+  }
+
+  equals() {
+    this.setState({
+      operator: "",
+      value1: "",
+      value2: parseInt(this.state.value1) + parseInt(this.state.value2)
+    });
   }
 
   render() {
