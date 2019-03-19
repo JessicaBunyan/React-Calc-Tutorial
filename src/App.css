@@ -1,32 +1,61 @@
 .App {
-  width: 310px;
+  width: 300px;
   height: 600px;
+  /* border: solid 5px black; */
+  margin: 40px auto 40px auto;
 }
 
 .display {
   width: 100%;
   height: 60px;
   text-align: right;
+  background: orange;
+  border: solid 1px orange;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
 }
 
 .buttons {
   width: 100%;
+  background: black;
+  border: solid 1px black;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.numbers {
+  display: inline-block;
+  height: 100%;
+  width: 75%;
+  overflow: hidden;
+}
+
+.operators {
+  overflow: hidden;
+  display: inline-block;
+  width: 25%;
+  height: 100%;
 }
 
 .button {
   text-align: center;
   display: inline-block;
-  border: solid 1px black;
-  border-radius: 5px;
-  width: 80px;
-
+  border: solid 1px gray;
+  background: grey;
+  color: white;
+  border-radius: 3px;
+  width: 50px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 20px;
   margin: 10px;
 }
 
 .v1 {
   font-size: 12px;
+  padding: 10px;
 }
 
 .v2 {
+  padding: 0 10px 0 0;
   font-size: 16px;
 }
