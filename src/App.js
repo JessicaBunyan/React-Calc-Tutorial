@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import logo, { ReactComponent } from "./logo.svg";
 import "./App.css";
-import Button from "./Number";
+import Button from "./Button";
 
 class App extends Component {
   constructor(props) {
@@ -9,7 +9,8 @@ class App extends Component {
     this.state = {
       value1: "",
       value2: "",
-      operator: ""
+      operator: "",
+      error: ""
     };
   }
 
@@ -29,7 +30,9 @@ class App extends Component {
     for (var i = 1; i < 10; i++) {
       numbers.push(<Button value={i} onClick={d => this.addDigit(d)} />);
     }
-    numbers.push(React.cloneElement(<Button value={0} />));
+    numbers.push(
+      React.cloneElement(<Button value={0} onClick={d => this.addDigit(d)} />)
+    );
     return numbers;
   }
 
@@ -42,6 +45,11 @@ class App extends Component {
 
     ops.push(<Button value={"="} onClick={() => this.equals()} />);
     return ops;
+  }
+
+  error(msg) {
+    console.log("error set");
+    this.setState({ error: msg, operator: "", value1: "", value2: "" });
   }
 
   equals() {
@@ -61,6 +69,10 @@ class App extends Component {
         result = parseFloat(this.state.value2) * parseFloat(this.state.value1);
         break;
       case "/":
+        if (this.state.value1 == 0) {
+          this.error("Error: divide by zero");
+          return;
+        }
         result = parseFloat(this.state.value2) / parseFloat(this.state.value1);
         break;
     }
