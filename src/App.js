@@ -38,6 +38,14 @@ class App extends Component {
     this.setState({ operator: o, value2: this.state.value1, value1: "" });
   }
 
+  addDecimalPoint() {
+    if (this.state.value1.indexOf(".") !== -1) {
+      return;
+    }
+
+    this.setState({ value1: this.state.value1 + ".", error: "" });
+  }
+
   error(msg) {
     console.log("error set");
     this.setState({ error: msg, operator: "", value1: "", value2: "" });
@@ -103,6 +111,7 @@ class App extends Component {
       numbers.push(<Button value={i} onClick={d => this.addDigit(d)} />);
     }
     numbers.push(<Button value={0} onClick={d => this.addDigit(d)} />);
+    numbers.push(<Button value={"."} onClick={() => this.addDecimalPoint()} />);
     return numbers;
   }
 
