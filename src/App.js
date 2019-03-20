@@ -20,6 +20,7 @@ class App extends Component {
   addDigit(d) {
     this.setState({ value1: this.state.value1 + "" + d, error: "" });
   }
+
   delDigit() {
     if (!this.state.value1) {
       return;
@@ -35,36 +36,6 @@ class App extends Component {
       return;
     }
     this.setState({ operator: o, value2: this.state.value1, value1: "" });
-  }
-
-  getNumbers() {
-    var numbers = [];
-    for (var i = 1; i < 10; i++) {
-      numbers.push(<Button value={i} onClick={d => this.addDigit(d)} />);
-    }
-    numbers.push(
-      React.cloneElement(<Button value={0} onClick={d => this.addDigit(d)} />)
-    );
-    return numbers;
-  }
-
-  getOperators() {
-    var ops = [];
-    ops.push(<Button value={"+"} onClick={() => this.addOperator("+")} />);
-    ops.push(<Button value={"-"} onClick={() => this.addOperator("-")} />);
-    ops.push(<Button value={"*"} onClick={() => this.addOperator("*")} />);
-    ops.push(<Button value={"/"} onClick={() => this.addOperator("/")} />);
-
-    ops.push(<Button value={"="} onClick={() => this.equals()} />);
-    return ops;
-  }
-  getCalcFunctions() {
-    var fns = [];
-    fns.push(<Button value={"del"} onClick={() => this.delDigit()} />);
-    fns.push(
-      <Button value={"CE"} onClick={() => this.setState(initialState)} />
-    );
-    return fns;
   }
 
   error(msg) {
@@ -105,9 +76,9 @@ class App extends Component {
   }
 
   render() {
-    var numbers = this.getNumbers();
-    var operators = this.getOperators();
-    var calculatorFunctions = this.getCalcFunctions();
+    var numbers = this.renderNumbers();
+    var operators = this.renderOperators();
+    var calculatorFunctions = this.renderCalcFunctions();
 
     return (
       <div className="App">
@@ -124,6 +95,36 @@ class App extends Component {
         </div>
       </div>
     );
+  }
+
+  renderNumbers() {
+    var numbers = [];
+    for (var i = 1; i < 10; i++) {
+      numbers.push(<Button value={i} onClick={d => this.addDigit(d)} />);
+    }
+    numbers.push(<Button value={0} onClick={d => this.addDigit(d)} />);
+    return numbers;
+  }
+
+  renderOperators() {
+    var ops = [];
+    ops.push(<Button value={"+"} onClick={() => this.addOperator("+")} />);
+    ops.push(<Button value={"-"} onClick={() => this.addOperator("-")} />);
+    ops.push(<Button value={"*"} onClick={() => this.addOperator("*")} />);
+    ops.push(<Button value={"/"} onClick={() => this.addOperator("/")} />);
+
+    ops.push(<Button value={"="} onClick={() => this.equals()} />);
+    return ops;
+  }
+
+  renderCalcFunctions() {
+    // Backspace and Clear
+    var fns = [];
+    fns.push(<Button value={"del"} onClick={() => this.delDigit()} />);
+    fns.push(
+      <Button value={"CE"} onClick={() => this.setState(initialState)} />
+    );
+    return fns;
   }
 }
 
