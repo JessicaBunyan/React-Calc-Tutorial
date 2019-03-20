@@ -54,7 +54,7 @@ class App extends Component {
   }
 
   equals() {
-    if (!this.state.operator) {
+    if (!this.state.operator || !this.state.value1 || !this.state.value2) {
       return;
     }
     var result;
