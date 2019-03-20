@@ -111,7 +111,10 @@ class App extends Component {
       numbers.push(<Button value={i} onClick={d => this.addDigit(d)} />);
     }
     numbers.push(<Button value={0} onClick={d => this.addDigit(d)} />);
+
     numbers.push(<Button value={"."} onClick={() => this.addDecimalPoint()} />);
+    numbers.push(<Button value={"="} onClick={() => this.equals()} />);
+
     return numbers;
   }
 
@@ -122,14 +125,13 @@ class App extends Component {
     ops.push(<Button value={"*"} onClick={() => this.addOperator("*")} />);
     ops.push(<Button value={"/"} onClick={() => this.addOperator("/")} />);
 
-    ops.push(<Button value={"="} onClick={() => this.equals()} />);
     return ops;
   }
 
   renderCalcFunctions() {
     // Backspace and Clear
     var fns = [];
-    fns.push(<Button value={"del"} onClick={this.delDigit} />);
+    fns.push(<Button value={"del"} onClick={() => this.delDigit()} />);
     fns.push(
       <Button value={"CE"} onClick={() => this.setState(initialState)} />
     );
