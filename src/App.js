@@ -99,7 +99,7 @@ class App extends Component {
 
     this.setState({
       operator: "",
-      value1: result,
+      value1: "" + result,
       value2: ""
     });
   }
