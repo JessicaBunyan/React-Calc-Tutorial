@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import logo, { ReactComponent } from "./logo.svg";
 import "./App.css";
 import Button from "./Button";
+import Display from "./Display";
 
 class App extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class App extends Component {
   }
 
   addDigit(d) {
-    this.setState({ value1: this.state.value1 + "" + d });
+    this.setState({ value1: this.state.value1 + "" + d, error: "" });
   }
 
   addOperator(o) {
@@ -90,10 +91,12 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="display">
-          <div className="v1">{this.state.value2 + this.state.operator}</div>
-          <div className="v2">{this.state.value1} </div>
-        </div>
+        <Display
+          value1={this.state.value1}
+          value2={this.state.value2}
+          operator={this.state.operator}
+          error={this.state.error}
+        />
         <div className="buttons">
           <div className="numbers">{numbers}</div>
           <div className="operators">{operators}</div>
