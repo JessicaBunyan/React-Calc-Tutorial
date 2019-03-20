@@ -32,7 +32,7 @@ class App extends Component {
   }
 
   addOperator(o) {
-    if (this.state.operator) {
+    if (this.state.operator || !this.state.value1) {
       return;
     }
     this.setState({ operator: o, value2: this.state.value1, value1: "" });
@@ -120,7 +120,7 @@ class App extends Component {
   renderCalcFunctions() {
     // Backspace and Clear
     var fns = [];
-    fns.push(<Button value={"del"} onClick={() => this.delDigit()} />);
+    fns.push(<Button value={"del"} onClick={this.delDigit} />);
     fns.push(
       <Button value={"CE"} onClick={() => this.setState(initialState)} />
     );
