@@ -48,11 +48,15 @@ class App extends Component {
   }
 
   addDecimalPoint() {
-    if (this.state.value1.indexOf(".") !== -1) {
+    if (this.state.value1.indexOf(".") !== -1 && !this.state.isResult) {
       return;
     }
 
-    this.addDigit(".");
+    if (this.state.value1 === "" || this.state.isResult) {
+      this.addDigit("0.");
+    } else {
+      this.addDigit(".");
+    }
   }
 
   error(msg) {
