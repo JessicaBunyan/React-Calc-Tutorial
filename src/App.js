@@ -8,7 +8,8 @@ var initialState = {
   value1: "",
   value2: "",
   operator: "",
-  error: ""
+  error: "",
+  isResult: false
 };
 
 class App extends Component {
@@ -18,11 +19,19 @@ class App extends Component {
   }
 
   addDigit(d) {
-    this.setState({ value1: this.state.value1 + "" + d, error: "" });
+    if (this.state.isResult) {
+      this.setState({ value1: "" + d, error: "", isResult: false });
+    } else {
+      this.setState({
+        value1: this.state.value1 + "" + d,
+        error: "",
+        isResult: false
+      });
+    }
   }
 
   delDigit() {
-    if (!this.state.value1) {
+    if (!this.state.value1 || this.state.isResult) {
       return;
     }
 
@@ -79,7 +88,8 @@ class App extends Component {
     this.setState({
       operator: "",
       value1: "" + result,
-      value2: ""
+      value2: "",
+      isResult: true
     });
   }
 
