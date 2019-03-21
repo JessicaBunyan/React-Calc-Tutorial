@@ -52,7 +52,7 @@ class App extends Component {
       return;
     }
 
-    this.setState({ value1: this.state.value1 + ".", error: "" });
+    this.addDigit(".");
   }
 
   error(msg) {
