@@ -109,7 +109,9 @@ We've initialised the currentValue as an empty string _You may be thinking - why
 
 Here we're using the React built in _setState_ function. Any time you want to update state it is _essential_ that you use this method. This method takes one parameter, and object of state variable names to update, mapped to their new values. In this case we want to update the _currentValue_ in state, by appending a single digit. We have calculated our new value for this state with this snippet: `this.state.currentValue + "" + d` - We have added an empty string here to ensure the `+` operation is joining two strings together rather than doing numerical addition - Think about a real calculator: If you pressed the '1' button twice the display should read '11' rather than '2'.
 
-Lets first go to Button.JS and put the wiring in place
+2.1.3 Including an onClick operation in our button.
+
+Now we have defined what should happen when we click a Button, lets now move to Button.js and add an onClick property to our HTML/JSX
 
 ```
 
@@ -120,6 +122,17 @@ return (
 );
 
 ```
+
+This component is now set up to receive a second prop named onClick, which we expect to be a function we will call with the prop _value_ as its parameter.
+
+2.1.4 plug addDigit into our Button component.
+
+```
+  numbers.push(<Button value={i} onClick={d => this.addDigit(d)} />);
+```
+
+Write some stuff about fat arrow/binding
+maybe we should set up initial state before doing this, and setup display first as well so we can show show that fiddling it will change the display as soon as this button is wired up.
 
 1 button appends to display
 create buttons 0-9
