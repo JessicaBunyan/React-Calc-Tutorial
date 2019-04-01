@@ -1,8 +1,0 @@
-Build a 1 button.
-1 button appends to display
-create buttons 0-9
-Create button for +, set operator state and create value 2
-create button for =, implement addition
-create buttons for -, *, / - implement these in equals
-
-
